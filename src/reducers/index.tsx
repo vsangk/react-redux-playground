@@ -1,19 +1,23 @@
-import { EnthusiasmAction } from "../actions";
-import { StoreState } from "../types";
-import { INCREMENT_ENTHUSIASM, DECREMENT_ENTHUSIASM } from "../constants";
+import { CheckUpAction } from "../actions";
+import { combineReducers } from "redux";
 
-export function enthusiasm(
-  state: StoreState,
-  action: EnthusiasmAction
-): StoreState {
+import { NEXT_STEP, PREVIOUS_STEP } from "../constants";
+
+export const checkUpStep = (state: number = 1, action: CheckUpAction) => {
   switch (action.type) {
-    case INCREMENT_ENTHUSIASM:
-      return { ...state, enthusiasmLevel: state.enthusiasmLevel + 1 };
-    case DECREMENT_ENTHUSIASM:
-      return {
-        ...state,
-        enthusiasmLevel: Math.max(1, state.enthusiasmLevel - 1)
-      };
+    case NEXT_STEP:
+      return state + 1;
+
+    case PREVIOUS_STEP:
+      return state - 1;
+
+    default:
+      return state;
   }
-  return state;
-}
+};
+
+// export const question = (state: QuestionSet[] = [], action: QuesitonAction);
+
+export const appState = combineReducers({
+  step: checkUpStep
+});

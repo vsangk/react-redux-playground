@@ -1,4 +1,9 @@
 export interface StoreState {
-  languageName: string;
-  enthusiasmLevel: number;
+  step: number;
+  // questionSet: QuestionSet[];
+}
+
+export interface QuestionSet {
+  question: string;
+  answer: string;
 }

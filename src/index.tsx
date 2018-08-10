@@ -1,25 +1,19 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import Hello from "./containers/Hello";
 import "./index.css";
 import registerServiceWorker from "./registerServiceWorker";
 import { createStore } from "redux";
-import { enthusiasm } from "./reducers";
 import { StoreState } from "./types";
 import { Provider } from "react-redux";
-import { EnthusiasmAction } from "./actions";
+import { CheckUpAction } from "./actions";
+import App from "./components/App";
+import { appState } from "./reducers";
 
-const store = createStore<StoreState, EnthusiasmAction, null, null>(
-  enthusiasm,
-  {
-    enthusiasmLevel: 1,
-    languageName: "TypeScript"
-  }
-);
+const store = createStore<StoreState, CheckUpAction, null, null>(appState);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Hello />
+    <App />
   </Provider>,
   document.getElementById("root") as HTMLElement
 );

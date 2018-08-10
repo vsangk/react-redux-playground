@@ -21,3 +21,23 @@ export function decrementEnthusiasm(): DecrementEnthusiasm {
     type: constants.DECREMENT_ENTHUSIASM
   };
 }
+
+/**              END OF Enthusiasm              */
+
+export type CheckUpAction = NextStep | PreviousStep;
+
+export interface NextStep {
+  type: constants.NEXT_STEP;
+}
+
+export interface PreviousStep {
+  type: constants.PREVIOUS_STEP;
+}
+
+export const nextStep = (): NextStep => ({
+  type: constants.NEXT_STEP
+});
+
+export const previousStep = (): PreviousStep => ({
+  type: constants.PREVIOUS_STEP
+});
